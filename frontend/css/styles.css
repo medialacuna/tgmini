@@ -247,7 +247,19 @@ input[type="range"] {
   flex: 0 0 auto;
 }
 
-.breath-circle {
+breath-circle {
+  /* это уже есть, но важно, чтобы были transition */
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+/* Нажатие пальцем / кликом */
+.breath-circle:active {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 36px rgba(255, 255, 255, 1),
+    0 0 110px rgba(250, 160, 120, 0.9);
+}
+{
   width: 160px;
   height: 160px;
   border-radius: 50%;
