@@ -38,9 +38,12 @@ body {
   flex-direction: column;
   height: 100%;
   padding: 10px 12px 12px;
-  backdrop-filter: blur(20px);
-  background: radial-gradient(circle at top, rgba(9, 9, 25, 0.9), rgba(3, 3, 12, 0.9));
+
+  /* было плотное затемнение — убираем его */
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.0));
+  backdrop-filter: blur(12px);
 }
+
 
 /* Header */
 .hw-header {
