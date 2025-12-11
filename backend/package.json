@@ -1,0 +1,16 @@
+{
+  "name": "heartwins-telegram-miniapp-backend",
+  "version": "1.1.0",
+  "description": "Static server for HEARTWINS Telegram Mini App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,451 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #03030c;
+  color: #f7f7ff;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#heartwinsCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Glass overlay */
+.overlay {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 12px 12px;
+  backdrop-filter: blur(20px);
+  background: radial-gradient(circle at top, rgba(9, 9, 25, 0.9), rgba(3, 3, 12, 0.9));
+}
+
+/* Header */
+.hw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.hw-title {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+
+.hw-user {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* Main layout */
+.hw-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.hw-panel {
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.12), rgba(16, 10, 35, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.45);
+}
+
+.hw-panel h2 {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Chakra "Buddha" layout */
+.chakra-buddha-layout {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.chakра-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  width: 84px;
+  align-items: stretch;
+}
+
+.chakra-core-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Chakra buttons */
+.chakra-btn {
+  padding: 4px 6px;
+  font-size: 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(9, 9, 30, 0.9);
+  color: #f7f7ff;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chakra-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.chakра-btn.active {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #21111c;
+  border-color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+/* Chakra core canvas */
+#chakraCanvas {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #ffffff, #f5e0ff, #f0dcff, #e1c4ff);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 50px rgba(151, 71, 255, 0.6);
+}
+
+.chakra-core-hint {
+  font-size: 10px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.chakra-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Buttons & inputs */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ghost {
+  background: transparent;
+  color: #f7f7ff;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.full {
+  width: 100%;
+}
+
+input[type="range"] {
+  flex: 1;
+  accent-color: #f4a9ff;
+}
+
+/* Sutra */
+.sutra {
+  font-size: 11px;
+  line-height: 1.4;
+  opacity: 0.95;
+  margin-top: 6px;
+}
+
+.sutra p {
+  margin-bottom: 2px;
+}
+
+/* Breath section */
+.hw-subtitle {
+  font-size: 11px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.breath-layout {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .chakra-buddha-layout {
+    flex-direction: column;
+  }
+  .breath-layout,
+  .wheel-layout,
+  .wallet-row {
+    flex-direction: column;
+  }
+  .chakra-column {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.breath-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.breath-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #ffffff, #f5e0ff, #f0dcff, #e1c4ff);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 50px rgba(151, 71, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.breath-circle.inhale {
+  transform: scale(1.07);
+  box-shadow:
+    0 0 28px rgba(255, 255, 255, 1),
+    0 0 80px rgba(120, 220, 255, 0.8);
+}
+
+.breath-circle.hold {
+  transform: scale(1.0);
+  box-shadow:
+    0 0 36px rgba(255, 255, 255, 1),
+    0 0 90px rgba(200, 128, 255, 0.85);
+}
+
+.breath-circle.exhale {
+  transform: scale(0.94);
+  box-shadow:
+    0 0 22px rgba(255, 255, 255, 0.9),
+    0 0 60px rgba(255, 170, 120, 0.7);
+}
+
+.breath-phase-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.breath-timer {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.breath-mic {
+  width: 100%;
+  font-size: 10px;
+}
+
+.breath-mic-title {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+.breath-mic-bar-wrapper {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  margin: 3px 0;
+}
+
+.breath-mic-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7be0ff, #ffcc88);
+  transition: width 0.1s linear;
+}
+
+.breath-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.breath-reward {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.breath-score {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.breath-score span {
+  font-weight: 600;
+}
+
+/* Wheel of awareness */
+.wheel-layout {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.wheel-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.wheel-disc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from -90deg,
+      #f4a9ff 0deg 51.4deg,
+      #a5b4ff 51.4deg 102.8deg,
+      #7dd3fc 102.8deg 154.2deg,
+      #6ee7b7 154.2deg 205.6deg,
+      #fde68a 205.6deg 257deg,
+      #fca5a5 257deg 308.4deg,
+      #e5e7eb 308.4deg 360deg
+    );
+  border: 4px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 50px rgba(120, 220, 255, 0.5);
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.23, 1.01);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.wheel-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wheel-result {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Wallet */
+.wallet-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.wallet-balance-label {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.wallet-balance-value {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.wallet-row {
+  display: flex;
+  gap: 8px;
+}
+
+.wallet-card {
+  flex: 1;
+  border-radius: 10px;
+  padding: 8px;
+  background: rgba(4, 4, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.wallet-card-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.wallet-card-body {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Footer */
+.hw-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  padding-top: 6px;
+  opacity: 0.8;
+}

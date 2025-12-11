@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>HEARTWINS · Telegram Mini App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="root">
+    <canvas id="heartwinsCanvas"></canvas>
+
+    <div class="overlay">
+      <header class="hw-header">
+        <div class="hw-title">HEARTWINS · поток осознанности</div>
+        <div class="hw-user" id="tgUserGreeting"></div>
+      </header>
+
+      <main class="hw-main">
+        <section class="hw-panel hw-panel--chakra">
+          <h2>Чакровый поток</h2>
+
+          <div class="chakra-buddha-layout">
+            <div class="chakra-column">
+              <button class="chakra-btn" data-chakra="sahasrara">Сахасрара</button>
+              <button class="chakra-btn" data-chakra="ajna">Аджна</button>
+              <button class="chakra-btn" data-chakra="vishuddha">Вишуддха</button>
+              <button class="chakra-btn" data-chakra="anahata">Анахата</button>
+              <button class="chakra-btn" data-chakra="manipura">Манипура</button>
+              <button class="chakra-btn" data-chakra="svadhishthana">Свадхистхана</button>
+              <button class="chakra-btn" data-chakра="muladhara">Муладхара</button>
+            </div>
+
+            <div class="chakra-core-block">
+              <canvas id="chakraCanvas"></canvas>
+              <div class="chakra-core-hint">
+                Центральное ядро реагирует на выбранную чакру: цвет · ритм · точечный поток.
+              </div>
+              <div class="chakra-controls">
+                <button id="playBtn" class="primary">▶️ Звук</button>
+                <input type="range" id="volumeSlider" min="0" max="100" value="40" />
+              </div>
+            </div>
+          </div>
+
+          <div id="sutraDisplay" class="sutra"></div>
+        </section>
+
+        <section class="hw-panel hw-panel--breath">
+          <h2>Дыхательная медитация</h2>
+          <p class="hw-subtitle">8 сек вдох · 2 сек пауза · 8 сек выдох</p>
+          <div class="breath-layout">
+            <div class="breath-visual">
+              <div id="breathCircle" class="breath-circle">
+                <div id="breathPhaseLabel" class="breath-phase-label">Готовы?</div>
+                <div id="breathTimer" class="breath-timer">01:30</div>
+              </div>
+              <div class="breath-mic">
+                <span class="breath-mic-title">Микрофон</span>
+                <div class="breath-mic-bar-wrapper">
+                  <div id="breathMicLevel" class="breath-mic-bar"></div>
+                </div>
+                <small id="breathMicStatus">
+                  Запустите цикл, чтобы включить мягкое распознавание дыхания.
+                </small>
+              </div>
+            </div>
+            <div class="breath-controls">
+              <button id="breathStartBtn" class="primary full">▶️ Начать цикл</button>
+              <button id="breathStopBtn" class="ghost full">⏹ Остановить</button>
+              <div id="breathRewardDisplay" class="breath-reward">
+                Завершите 1.5 минуты осознанного дыхания — и получите HEARTWINS очки.
+              </div>
+              <div class="breath-score">
+                Текущий баланс осознанности:
+                <span id="awarenessScore">0</span> HW · points
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="hw-panel hw-panel--wheel">
+          <h2>Колесо осознанности</h2>
+          <p class="hw-subtitle">
+            Игровой режим: отпусти контроль, доверься колесу — оно выберет чакру и бонус HW.
+          </p>
+          <div class="wheel-layout">
+            <div class="wheel-container">
+              <div id="wheelDisc" class="wheel-disc"></div>
+              <div class="wheel-pointer">▲</div>
+            </div>
+            <div class="wheel-controls">
+              <button id="wheelSpinBtn" class="primary full">🎡 Запустить колесо</button>
+              <div id="wheelResult" class="wheel-result">
+                Нажмите «Запустить колесо», чтобы случайным образом активировать чакру и получить очки.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="hw-panel hw-panel--wallet">
+          <h2>Кошелёк осознанности</h2>
+          <div class="wallet-balance">
+            <div class="wallet-balance-label">Баланс:</div>
+            <div class="wallet-balance-value">
+              <span id="walletBalance">0.00</span> HW · points
+            </div>
+          </div>
+          <div class="wallet-row">
+            <div class="wallet-card">
+              <div class="wallet-card-title">Статус</div>
+              <div id="walletStatus" class="wallet-card-body">
+                Локальный кошелёк. Он будет связан с блокчейн-аккаунтом HEARTWINS позже.
+              </div>
+            </div>
+            <div class="wallet-card wallet-card--actions">
+              <div class="wallet-card-title">Действия</div>
+              <div class="wallet-card-body">
+                <button id="walletCopyBtn" class="ghost full">Скопировать локальный ID</button>
+                <button id="walletResetBtn" class="ghost full">Сбросить кошелёк (demo)</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="hw-footer">
+        <span>HEARTWINS · Telegram Mini App</span>
+        <span id="footerHint">Данные хранятся локально, без регистрации. Blockchain-связь — на следующем этапе.</span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/breath.js"></script>
+  <script src="js/wheel.js"></script>
+</body>
+</html>
